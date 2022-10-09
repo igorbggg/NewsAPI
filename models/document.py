@@ -1,6 +1,13 @@
-from typing import Any
+from typing import Any, Optional
 
 from beanie import Document as Doc
+from pydantic import BaseModel
+
+
+class DsInsight(BaseModel):
+    insight: Optional[str]
+    insight_proba: Optional[float]
+    insight_location: Optional[str]
 
 
 class Document(Doc):
@@ -18,7 +25,7 @@ class Document(Doc):
     ds_summary: Any
     repost_cnt: Any
     trend: Any
-    insight: Any
+    ds_insight: DsInsight
     ap_uid: Any
 
     class Collection:
