@@ -1,4 +1,5 @@
 from typing import Any, Optional
+from datetime import datetime
 
 from beanie import Document as Doc
 from pydantic import BaseModel
@@ -25,8 +26,9 @@ class Document(Doc):
     ds_summary: Any
     repost_cnt: Any
     trend: Any
-    ds_insight: DsInsight
+    ds_insight: Optional[DsInsight]
     ap_uid: Any
+    created_at: Optional[datetime]
 
     class Collection:
         name = "rssFeeds"
