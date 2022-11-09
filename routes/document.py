@@ -15,7 +15,7 @@ router = APIRouter()
 async def get_documents(
         response: Response,
         trend: Optional[str] = None,
-        insight: Optional[bool] = True,
+        insight: Optional[bool] = False,
         period: Optional[int] = 1,
         limit: Optional[int] = 100,
         offset: Optional[int] = 0
@@ -41,6 +41,6 @@ async def get_documents(
         ),
         limit=limit,
         skip=offset
-    ).sort("-ds_insight.insight_proba", "-created_at").to_list()
+    ).sort("-created_at").to_list()
 
     return documents
